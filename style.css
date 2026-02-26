@@ -26,7 +26,7 @@ body {
     max-width: 400px;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid grey;
+    border: 2px solid grey;
     border-radius: 4px;
 }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .main .search_bar .missing {
-    border-color: red;
+    border: 2px solid red;
 }
 
 .main .table {
@@ -149,23 +149,11 @@ body {
 
 .main .table .grid .add {
     background-color: lightgreen;
-}
-
-.main .table .grid .rmv,
-.main .table .grid .add {
     border: 1px solid;
     border-radius: 50%;
     width: 25px; 
     height: 25px;
     font-size: 16px;
-}
-
-.main .table .grid .rmv {
-    background-color: lightcoral;
-}
-.main .table .grid .add {
-    background-color: lightgreen;
-    margin-right: 5px;
 }
 
 .main .table .grid button {

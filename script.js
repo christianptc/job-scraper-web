@@ -19,7 +19,9 @@ function valid_input(input1, input2) {
     return true;
 }
 
-function load() {
+function load(table) {
+    let userId = get_userId();
+
     /* 
     
     REQUEST DATA FROM PYTHON API AND THAT DATA STORED IN jsonString
@@ -30,7 +32,9 @@ function load() {
 
     const jobs = JSON.parse(jsonString);
 
+    loader.classList.remove("active");
     jobs.forEach(job => {
+        loader.classList.add("active");
         let grid = document.getElementById("grid");
         let li = document.createElement("li");
 
@@ -39,12 +43,13 @@ function load() {
         let location = "test location"
         let link = "<span class=\"link\"><a href=\"\">link</a></span>"
         let date = "<span class=\"date\">26.02.2026</span>"
-        let buttons = "<span class=\"buttons\"><button class=\"add\" onclick=\"add(this)\">&plus;</button><button class=\"rmv\" onclick=\"remove(this)\">&minus;</button></span>"
+        let buttons = "<span class=\"buttons\"><button class=\"add\" onclick=\"add(this)\">&plus;</button></span>"
         li.id = job.ID;
         li.innerHTML = company + jobtitle + location + link + date + buttons
 
         grid.appendChild(li);
         console.log(job.ID, job.Name, job.Birthday);
+
     });
 }
 
@@ -53,17 +58,11 @@ function add(buttonElement) {
     console.log("added " + rowID);
 }
 
-function remove(buttonElement) {
-    let rowID = buttonElement.closest('li').id;
-    console.log("removed " + rowID);
-}
-
-
 function search() {
-    var loader = document.getElementById("loader");
+    let loader = document.getElementById("loader");
 
-    var jobtitle = document.getElementById("job_search");
-    var region = document.getElementById("region_search");
+    let jobtitle = document.getElementById("job_search");
+    let region = document.getElementById("region_search");
     
     if (!valid_input(jobtitle, region)) return;
 
@@ -85,7 +84,22 @@ function initialize(table_id) {
 
     currActive.classList.remove('active');
 
+    clear_grid();
+    
+    load(table_id)
     let newActive = document.getElementById(table_id);
+
     newActive.classList.add("active");
 
+}
+
+function get_userId() {
+    let userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        userId = crypto.randomUUID();
+        localStorage.setItem("userId", userId);
+    }
+    console.log(userId)
+    return userId;
 }

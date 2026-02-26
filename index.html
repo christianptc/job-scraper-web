@@ -7,7 +7,7 @@
     <script src="script.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body onload="load('searched')">
     <div class="main">
         <div class="search_bar">
             <div class="search_inputs">
@@ -27,7 +27,7 @@
                 Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
             </div>
             <ul id="grid" class="grid">
-                <li id=""><span class="company">company</span><span class="job">Software ineer</span><span class="location">germany</span><span class="link"><a href="">link</a></span><span class="date">26.02.2026</span>   <span class="buttons"><button class="add" onclick="load()">&plus;</button><button class="rmv" onclick="clear_grid()">&minus;</button></span></li>
+                <li id=""><span class="company">company</span><span class="job">Software ineer</span><span class="location">germany</span><span class="link"><a href="">link</a></span><span class="date">26.02.2026</span><span class="buttons"><button class="add" onclick="add()">&plus;</button></li>
             </ul>
         </div>
     </div>
