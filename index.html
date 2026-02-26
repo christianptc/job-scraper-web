@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="search_bar">
+            <div class="search_inputs">
+                <input id="job_search" class="job_search" type="text" placeholder="Job Title">
+                <input id="region_search" class="region_search" type="text" placeholder="Region">
+                <button class="search_button" onclick="search()">Search</button>
+            </div>
+            
+            <div class="table_choice">
+                <button id="searched" class="active" onclick="initialize(this.id)" data-text="Search">Search</button>
+                <button id="favorites" onclick="initialize(this.id)" data-text="Favorites">Favorites</button>
+            </div>
+        </div>
+
+        <div class="table">
+            <div id="loader">
+                Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+            </div>
+            <ul id="grid" class="grid">
+                <li id=""><span class="company">company</span><span class="job">Software ineer</span><span class="location">germany</span><span class="link"><a href="">link</a></span><span class="date">26.02.2026</span>   <span class="buttons"><button class="add" onclick="load()">&plus;</button><button class="rmv" onclick="clear_grid()">&minus;</button></span></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

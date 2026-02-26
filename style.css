@@ -1,0 +1,184 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+
+.main .search_bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+    border-bottom: 1px solid grey;
+}
+
+.search_inputs {
+    grid-column: 2;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.main .search_bar .job_search,
+.main .search_bar .region_search {
+    flex: 1 1 200px;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+.main .search_bar button.search_button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.main .search_bar .table_choice {
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end; 
+    gap: 15px;
+}
+
+.main .search_bar .table_choice button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.main .search_bar .table_choice button::after {
+    display: block;
+    content: attr(data-text);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.main .search_bar .table_choice .active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.main .search_bar .missing {
+    border-color: red;
+}
+
+.main .table {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .table #loader {
+    position: absolute;
+    opacity: 0;
+    top: 2vh;
+    scale: 1.5;
+    color: gray;
+    transition: opacity 0.5s ease;
+    width: 100%;
+}
+
+.main .table #loader .dot {
+  animation: loading-dots 1.4s infinite ease-in-out;
+}
+
+.main .table #loader .dot:nth-child(1) { animation-delay: 0.0s; }
+.main .table #loader .dot:nth-child(2) { animation-delay: 0.1s; }
+.main .table #loader .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loading-dots {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+.main .table #loader.active {
+    opacity: 1;
+}
+
+.main .table .grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.main .table .grid li {
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: 2fr 3.5fr 1fr 0.5fr 1fr auto; 
+    gap: 15px; 
+    align-items: center; 
+    width: 70%; 
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid grey;
+}
+
+.main .table .grid span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.main .table .grid span.location,
+.main .table .grid span.link,
+.main .table .grid span.date {
+    text-align: center;
+}
+
+.main .table .grid .add {
+    background-color: lightgreen;
+}
+
+.main .table .grid .rmv,
+.main .table .grid .add {
+    border: 1px solid;
+    border-radius: 50%;
+    width: 25px; 
+    height: 25px;
+    font-size: 16px;
+}
+
+.main .table .grid .rmv {
+    background-color: lightcoral;
+}
+.main .table .grid .add {
+    background-color: lightgreen;
+    margin-right: 5px;
+}
+
+.main .table .grid button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.main .table .grid button:hover {
+    cursor: pointer;
+}
+
+.main .table .grid .buttons {
+    padding-bottom: 12%;
+}
