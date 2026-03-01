@@ -14,11 +14,38 @@ body {
 }
 
 .search_inputs {
-    grid-column: 2;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr auto auto;
+    column-gap: 5px;
+    padding-top: 10px;
+    align-items: end;
 }
+
+.search_inputs::before {
+    content: "Job Title";
+    position: absolute;
+    bottom: 80%;
+    left: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+}
+
+.search_inputs::after {
+    content: "Location";
+    position: absolute;
+    bottom: 80%;
+    left: calc(((100% - 30px - 115px - 115px) / 3 * 2) + 10px); 
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+}
+
+.main .search_bar .job_search { grid-column: 1; width: 100%; }
+.main .search_bar .region_search { grid-column: 2; width: 100%; }
+.main .search_bar .region_search #perimeter { grid-column: 3; }
+.main .search_bar .region_search .search_button { grid-column: 4; }
 
 .main .search_bar .job_search,
 .main .search_bar .region_search {
@@ -38,7 +65,11 @@ body {
     max-width: 250px;
 }
 
-.job_search, .region_search, #perimeter {
+.main .search_bar .search_inputs .job_search, 
+.main .search_bar .search_inputs .region_search, 
+.main .search_bar .search_inputs #perimeter {
+    height: 45px; /* Set a fixed height for all */
+    box-sizing: border-box;
     padding: 10px 15px;
     border: 1px solid #cdd0de;
     border-radius: 4px;
@@ -48,7 +79,7 @@ body {
     outline: none;
 }
 
-#perimeter {
+.main .search_bar .search_inputs #perimeter {
     cursor: pointer;
 }
 
@@ -188,10 +219,11 @@ body {
     text-overflow: ellipsis;
 }
 
-.main .table .grid span.location,
-.main .table .grid span.link,
-.main .table .grid span.date {
+.main .table .grid span.column {
     text-align: center;
+}
+.main .table .grid span.column_left {
+    text-align: left;
 }
 
 .main .table .grid .add {

@@ -41,16 +41,16 @@ function renderJobs(jobs) {
 
     setTimeout(() => {
         jobs.forEach(job => {
-            let company = "<span class=\"company\">" + job.company + "</span>";
-            let jobtitle = "<span class=\"job\">" + job.position + "</span>";
-            let location = "test location";
-            let link = "<span class=\"link\"><a href=\"\">link</a></span>";
-            let date = "<span class=\"date\">26.02.2026</span>";
+            let company = "<span class=\"column_left\">" + job.company + "</span>";
+            let jobtitle = "<span class=\"column_left\">" + job.job_title + "</span>";
+            let location = "<span class=\"column\">" + job.location + "</span>";
+            let link = "<span class=\"column\"><a href=\""+ job.link +"\">LINK</a></span>";
+            let date = "<span class=\"column\">" + job.date + "</span>";
             let buttons = "<span class=\"buttons\"><button class=\"add\" onclick=\"add(this)\">&plus;</button></span>";
 
             let li = document.createElement("li");
 
-            li.id = job.ID;
+            li.id = job.id;
             li.innerHTML = company + jobtitle + location + link + date + buttons;
 
             grid.appendChild(li);

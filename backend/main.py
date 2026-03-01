@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .api import router
-from .services.db_handler import table_init
+from .services.db_handler import handler
 
 
 app = FastAPI()
@@ -27,7 +27,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 def main():
-    table_init()
+    handler().table_init()
 
 @app.get("/")
 async def home():

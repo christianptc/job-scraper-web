@@ -5,8 +5,11 @@
 .sqlite3-shm
 .sqlite3-journal
 
-.db
+*.db
+*.db-shm
+*.db-wal
 
+.vscode/
 .DS_Store
 
 venv/
