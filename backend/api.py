@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status, Response
 
 from .services import db_handler
 from .services import scraper
@@ -6,8 +6,8 @@ from .services import scraper
 db = db_handler.handler()
 router = APIRouter()
 
-@router.get("/init/{user_id}/{table}")
-async def initialize_user_data(user_id: str, table: str):
+@router.get("/users/{user_id}/{table}/jobs")
+async def fetch_stored_jobs(user_id: str, table: str):
     
     job_ids = db.get_stored_jobIDs(user_id, table)
 
@@ -29,4 +29,10 @@ async def initialize_user_data(user_id: str, table: str):
         })
 
     return stored_jobs
+
+@router.post("/users/{user_id}/activity", status_code=status.HTTP_204_NO_CONTENT)
+async def log_activity(user_id: str):
+    
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 

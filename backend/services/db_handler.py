@@ -96,3 +96,15 @@ class handler:
         except Exception as e:
             print(f"ERROR get_jobs_byID: {e}")
             return []
+        
+    def send_heartbeat(self, user_id):
+        date_now = datetime.now().strftime('%d.%m.%Y %H:%M')
+        try:
+            with sqlite3.connect(DB_PATH, timeout=20.0) as conn:                
+                cur = conn.cursor()
+                query = f"UPDATE {self.tablename_users} SET last_seen = ?, total_time = total_time + 1 WHERE id = ?"
+
+                cur.execute(query, (date_now, user_id))
+        except Exception as e:
+            print(f"ERROR send_heartbeat: {e}")
+    
