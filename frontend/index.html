@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="search_bar">
+
+            <div class="stats">
+                <button class="dashboard" onclick="test()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="gray" fill-rule="evenodd" d="M3.6 2.25A1.35 1.35 0 0 0 2.25 3.6v16.8c0 .746.604 1.35 1.35 1.35h16.8a1.35 1.35 0 0 0 1.35-1.35V3.6a1.35 1.35 0 0 0-1.35-1.35zM16.75 8a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0zM12 10.25a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75M8.75 13a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0z" clip-rule="evenodd"/></svg>
+                </button>
+            </div>
+
+            <div class="search_inputs">
+                <input id="job_search" class="job_search" type="text" placeholder="e.g., Werkstudent Informatik">
+                <input id="region_search" class="region_search" type="text" placeholder="City or Zip Code">
+                <select id="perimeter" size="1">
+                    <option value="0">Entire Town</option>
+                    <option value="10">10 km</option>
+                    <option value="15">15 km</option>
+                    <option value="25">25 km</option>
+                    <option value="50">50 km</option>
+                    <option value="100">100 km</option>
+                    <option value="200">200 km</option>
+                </select>
+                <button class="search_button" onclick="search()">Search</button>
+            </div>
+            
+            <div class="table_choice">
+                <button id="searched" class="active" onclick="toggleTableView(this.id)" data-text="Search">Search</button>
+                <button id="favorites" onclick="toggleTableView(this.id)" data-text="Favorites">Favorites</button>
+            </div>
+
+        </div>
+
+        <div id="loader">
+                Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+            </div>
+
+        <div class="table">
+            <ul id="grid" class="grid">
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
