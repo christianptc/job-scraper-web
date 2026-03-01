@@ -11,6 +11,7 @@ if (!userId) {
 
 const loader = document.getElementById("loader");
 const grid = document.getElementById("grid");
+const empty_grid = document.getElementById("empty");
 
 // GLOBALS END
 
@@ -35,7 +36,14 @@ function valid_input(input1, input2) {
 }
 
 function renderJobs(jobs) {
+    if (jobs.length == 0) {
+        empty_grid.classList.remove("active")
+        return
+    }
     clear_grid();
+
+
+    empty_grid.classList.add("active")
     grid.classList.add("loading");
     loader.classList.add("active");
 
@@ -56,14 +64,14 @@ function renderJobs(jobs) {
             grid.appendChild(li);
             console.log(job.ID, job.Name, job.Birthday);
         });
-
+        
         grid.classList.remove("loading");
         loader.classList.remove("active");
-    }, 2000);
+    }, 10);
 }
 
 function fetchJobs(table) {
-    fetch(`${url}/init/${userId}/${table}`)
+    fetch(`${url}/users/${userId}/${table}/jobs`)
         .then(response => response.json())
         .then(data=> {
             console.log(data)
@@ -112,7 +120,9 @@ function toggleTableView(table_id) {
 }
 
 function ping_online() {
-    // send ping to database that user is online
+    fetch(`${url}/users/${userId}/activity`, {
+        method: "POST"
+    }).catch(error => console.error("ERROR: ", error))
     return
 }
 

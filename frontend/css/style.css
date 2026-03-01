@@ -190,6 +190,20 @@ body {
     z-index: 999;
 }
 
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+    color: gray;
+}
+
+.active {
+    display: none;
+}
+
+
 .main .table .grid {
     position: relative;
     display: flex;
